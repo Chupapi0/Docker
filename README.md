@@ -28,13 +28,11 @@ Pasos para crear un contenedor
    25  history
 ```
 
-
-
 ```shell
     sudo mkdir volumen
     docker run -it --net=host --name contenedor_web -v "$PWD"/volumen:/home/volumen -h contenedor -p 8080:8080 ubuntu:24.04
+    docker rmi b58bc5e797de para borrar una imagen
 ```
-
 
 ## DockerFile
 1. FROM     ubuntu:24.04
