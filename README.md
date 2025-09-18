@@ -1,6 +1,6 @@
 # Docker
 Pasos para crear un contenedor
-´´´shell
+```shell
     1  apt update
     2  apt upgrade -y
     3  apt install python3 -y
@@ -26,13 +26,13 @@ Pasos para crear un contenedor
    23  ls
    24  python3 hola.py
    25  history
-´´´
+```
 
 
 
-´´´shell
+```shell
    mkdir volumen
     4  docker run -it --net=host --name contenedor_web -v "$PWD"/volumen:/home/volumen -h contenedor -p 8080:8080 ubunto:24.04
     5  docker run -it --net=host --name contenedor_web -v "$PWD"/volumen:/home/volumen -h contenedor -p 8080:8080 ubuntu:24.04
     6  history
-´´´
+```
