@@ -31,8 +31,13 @@ Pasos para crear un contenedor
 
 
 ```shell
-   mkdir volumen
-    4  docker run -it --net=host --name contenedor_web -v "$PWD"/volumen:/home/volumen -h contenedor -p 8080:8080 ubunto:24.04
-    5  docker run -it --net=host --name contenedor_web -v "$PWD"/volumen:/home/volumen -h contenedor -p 8080:8080 ubuntu:24.04
-    6  history
+    sudo mkdir volumen
+    docker run -it --net=host --name contenedor_web -v "$PWD"/volumen:/home/volumen -h contenedor -p 8080:8080 ubuntu:24.04
 ```
+
+
+## DockerFile
+1. FROM     ubuntu:24.04
+2. RUN      apt update
+3. COPY     web/ : /home/web/
+4. CMD      ["python3","app.py"]
