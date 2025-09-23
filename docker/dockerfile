@@ -1,4 +1,34 @@
+#Asignamos que sistema operativo vamos a utilizar y su version 
 FROM ubuntu:24.04
+#Actualizamos al sistema operativo
 RUN apt update
+#Actualizamos e instalamos los paquetes y librerias mas actuales
 RUN apt upgrade -y
+#Instalamos python a nustro SO
 RUN apt install python3 -y
+#Instalamos el PIP que nos permite instalar librerias dentro de python
+RUN apt install python3-pip -y
+#Instalamos el módulo venv para crear entornos virtuales con python 3.12.
+RUN apt install python3.12-venv -y
+#Instala los headers y archivos de desarrollo de python
+RUN apt install python3-dev -y
+#Intaslamos esto para que python compile desde fuente
+RUN apt install build-essential -y
+#Instalamos sqlite3 para poder usar SQL
+RUN apt install sqlite3 -y
+#Copiemos lo que tengamos en web/ "local" hacia /web "docker"
+COPY web/ /web
+#Hacemos que docker trabaje desde la carpeta /web
+WORKDIR /web
+#Creamos un enterno virtual para poder instalar las librerias
+RUN python3 -m venv venv
+#Hacemos que desde el entorno virtual actualize el pip
+RUN venv/bin/pip install --upgrade pip
+#Instalamos web.py para que reconozca nuestro trabajo en web
+RUN venv/bin/pip install web.py
+#Instalamos requests para  hacer peticioneshttp de forma sencilla con python
+RUN venv/bin/pip install requests
+#Exponemos el perto 8080 para que sea usado
+EXPOSE 8080
+#Y por ultimo hacemos que ejecute el app.py utilizando el entorno virtual
+CMD ["venv/bin/python", "app.py"]

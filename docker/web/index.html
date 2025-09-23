@@ -1,0 +1,26 @@
+$def with (usuarios)
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Agenda</title>
+</head>
+<body>
+    <h1>Lista de Usuarios</h1>
+    <table border="1">
+        <tr>
+            <th>ID</th>
+            <th>Usuario</th>
+            <th>Email</th>
+        </tr>
+        $for usuario in usuarios:
+            <tr>
+                <td>$usuario['id']</td>
+                <td>$usuario['nombre']</td>
+                <td>$usuario['email']</td>
+            </tr>
+    </table>
+    <br>
+    <a href="/insertar">Insertar un nuevo usuarios</a>
+</body>
+</html>
